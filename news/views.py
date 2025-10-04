@@ -13,8 +13,14 @@ from .serializers import ArticleSerializer, NewsletterSerializer
 
 
 def home(request):
-    """
-    Renders the home page with a list of approved articles and newsletters.
+    """Renders the home page with a list of approved articles and newsletters.
+    
+    Displays publicly available content to all users including approved articles,
+    newsletters, publishers, and journalists.
+    
+    :param request: HTTP request object
+    :returns: Rendered home page with content context
+    :rtype: HttpResponse
     """
     approved_articles = (
         Article.objects.filter(approved=True)
@@ -36,8 +42,14 @@ def home(request):
 
 
 def register(request):
-    """
-    Handles user registration and assigns roles and permissions.
+    """Handles user registration and assigns roles and permissions.
+    
+    Processes user registration form, saves the user, assigns them to publishers
+    based on their role, and logs them in upon successful registration.
+    
+    :param request: HTTP request object
+    :returns: Registration form or redirect to dashboard
+    :rtype: HttpResponse
     """
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -57,8 +69,14 @@ def register(request):
 
 
 def login_view(request):
-    """
-    Handles user login and redirects to the appropriate dashboard.
+    """Handles user login and redirects to the appropriate dashboard.
+    
+    Authenticates user credentials and redirects to role-specific dashboard
+    upon successful login.
+    
+    :param request: HTTP request object
+    :returns: Login form or redirect to appropriate dashboard
+    :rtype: HttpResponse
     """
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -80,8 +98,11 @@ def login_view(request):
 
 
 def logout_view(request):
-    """
-    Logs the user out and redirects to the home page.
+    """Logs the user out and redirects to the home page.
+    
+    :param request: HTTP request object
+    :returns: Redirect to home page
+    :rtype: HttpResponse
     """
     logout(request)
     return redirect('home')
@@ -89,8 +110,14 @@ def logout_view(request):
 
 @login_required
 def dashboard(request):
-    """
-    Renders the personalized dashboard for a logged-in reader.
+    """Renders the personalized dashboard for a logged-in reader.
+    
+    Shows subscribed content from publishers and journalists that the reader follows.
+    Redirects editors and journalists to their respective dashboards.
+    
+    :param request: HTTP request object
+    :returns: Reader dashboard or redirect to role-specific dashboard
+    :rtype: HttpResponse
     """
     user = request.user
     if user.role.lower() == 'reader':
@@ -140,8 +167,12 @@ def dashboard(request):
 
 
 def article_detail(request, article_id):
-    """
-    Renders the detail page for a single article.
+    """Renders the detail page for a single article.
+    
+    :param request: HTTP request object
+    :param article_id: ID of the article to display
+    :returns: Article detail page
+    :rtype: HttpResponse
     """
     article = get_object_or_404(Article, pk=article_id)
     return render(request, 'news/article_detail.html', {'article': article})
@@ -149,8 +180,15 @@ def article_detail(request, article_id):
 
 @login_required
 def subscribe(request, subscription_type, pk):
-    """
-    Handles the subscription/unsubscription logic for readers.
+    """Handles the subscription/unsubscription logic for readers.
+    
+    Toggles subscription status for publishers or journalists.
+    
+    :param request: HTTP request object
+    :param subscription_type: Type of subscription ('publisher' or 'journalist')
+    :param pk: Primary key of the publisher or journalist
+    :returns: Redirect to home page
+    :rtype: HttpResponse
     """
     if request.method == 'POST':
         if request.user.role.lower() == 'reader':
@@ -178,8 +216,11 @@ def subscribe(request, subscription_type, pk):
 @login_required
 @user_passes_test(lambda u: u.role == 'journalist')
 def create_article(request):
-    """
-    Allows journalists to create and submit new articles.
+    """Allows journalists to create and submit new articles.
+    
+    :param request: HTTP request object
+    :returns: Article creation form or redirect to journalist dashboard
+    :rtype: HttpResponse
     """
     if request.method == 'POST':
         form = ArticleForm(request.POST)
@@ -197,8 +238,11 @@ def create_article(request):
 @login_required
 @user_passes_test(lambda u: u.role.lower() == 'journalist')
 def journalist_dashboard(request):
-    """
-    Renders the dashboard for journalists, showing their submitted content.
+    """Renders the dashboard for journalists, showing their submitted content.
+    
+    :param request: HTTP request object
+    :returns: Journalist dashboard with articles and newsletters
+    :rtype: HttpResponse
     """
     articles = (
         Article.objects.filter(author=request.user)
@@ -217,6 +261,13 @@ def journalist_dashboard(request):
 
 @login_required
 def edit_article(request, pk):
+    """Allows authors and editors to edit existing articles.
+    
+    :param request: HTTP request object
+    :param pk: Primary key of the article to edit
+    :returns: Article edit form or redirect to appropriate dashboard
+    :rtype: HttpResponse
+    """
     article = get_object_or_404(Article, pk=pk)
     # Check if the user is the author or an editor
     is_author = request.user == article.author
@@ -248,6 +299,13 @@ def edit_article(request, pk):
 
 @login_required
 def delete_article(request, pk):
+    """Allows authors and editors to delete articles.
+    
+    :param request: HTTP request object
+    :param pk: Primary key of the article to delete
+    :returns: Delete confirmation page or redirect to appropriate dashboard
+    :rtype: HttpResponse
+    """
     article = get_object_or_404(Article, pk=pk)
     # Check if the user is the author or an editor
     is_author = request.user == article.author
@@ -275,6 +333,13 @@ def delete_article(request, pk):
 
 @login_required
 def edit_newsletter(request, pk):
+    """Allows authors and editors to edit existing newsletters.
+    
+    :param request: HTTP request object
+    :param pk: Primary key of the newsletter to edit
+    :returns: Newsletter edit form or redirect to appropriate dashboard
+    :rtype: HttpResponse
+    """
     newsletter = get_object_or_404(Newsletter, pk=pk)
     # Check if the user is the author or an editor
     is_author = request.user == newsletter.author
@@ -306,6 +371,13 @@ def edit_newsletter(request, pk):
 
 @login_required
 def delete_newsletter(request, pk):
+    """Allows authors and editors to delete newsletters.
+    
+    :param request: HTTP request object
+    :param pk: Primary key of the newsletter to delete
+    :returns: Delete confirmation page or redirect to appropriate dashboard
+    :rtype: HttpResponse
+    """
     newsletter = get_object_or_404(Newsletter, pk=pk)
     # Check if the user is the author or an editor
     is_author = request.user == newsletter.author
@@ -334,8 +406,11 @@ def delete_newsletter(request, pk):
 @login_required
 @user_passes_test(lambda u: u.role.lower() == 'editor')
 def editor_dashboard(request):
-    """
-    Renders the editor's dashboard with unapproved articles and newsletters.
+    """Renders the editor's dashboard with unapproved articles and newsletters.
+    
+    :param request: HTTP request object
+    :returns: Editor dashboard with pending content for approval
+    :rtype: HttpResponse
     """
     unapproved_articles = (
         Article.objects.filter(approved=False)
@@ -355,8 +430,11 @@ def editor_dashboard(request):
 @login_required
 @user_passes_test(lambda u: u.role.lower() == 'editor')
 def editor_content_management(request):
-    """
-    Renders the content management page for editors, showing approved content.
+    """Renders the content management page for editors, showing approved content.
+    
+    :param request: HTTP request object
+    :returns: Editor content management page with approved content
+    :rtype: HttpResponse
     """
     articles = Article.objects.filter(approved=True).order_by('-created_at')
     newsletters = (
@@ -373,8 +451,11 @@ def editor_content_management(request):
 @login_required
 @user_passes_test(lambda u: u.role.lower() == 'journalist')
 def create_newsletter(request):
-    """
-    Allows journalists to create and submit new newsletters.
+    """Allows journalists to create and submit new newsletters.
+    
+    :param request: HTTP request object
+    :returns: Newsletter creation form or redirect to journalist dashboard
+    :rtype: HttpResponse
     """
     if request.method == 'POST':
         form = NewsletterForm(request.POST)
@@ -389,10 +470,17 @@ def create_newsletter(request):
 
 
 class SubscribedArticlesView(APIView):
-    """
-    API view to get a list of articles based on a reader's subscriptions.
+    """API view to get a list of articles based on a reader's subscriptions.
+    
+    Returns articles from publishers and journalists that the reader follows.
     """
     def get(self, request, *args, **kwargs):
+        """Handle GET requests for subscribed articles.
+        
+        :param request: HTTP request object
+        :returns: JSON response with subscribed articles or error
+        :rtype: Response
+        """
         if (
             not request.user.is_authenticated or
             request.user.role.lower() != 'reader'
@@ -425,10 +513,17 @@ class SubscribedArticlesView(APIView):
 
 
 class SubscribedNewslettersView(APIView):
-    """
-    API view to get a list of newsletters based on a reader's subscriptions.
+    """API view to get a list of newsletters based on a reader's subscriptions.
+    
+    Returns newsletters from publishers and journalists that the reader follows.
     """
     def get(self, request, *args, **kwargs):
+        """Handle GET requests for subscribed newsletters.
+        
+        :param request: HTTP request object
+        :returns: JSON response with subscribed newsletters or error
+        :rtype: Response
+        """
         if (
             not request.user.is_authenticated or
             request.user.role.lower() != 'reader'
@@ -461,10 +556,15 @@ class SubscribedNewslettersView(APIView):
 
 
 class ArticleApprovalView(APIView):
-    """
-    API view for editors to approve articles.
-    """
+    """API view for editors to approve articles."""
     def post(self, request, article_id, *args, **kwargs):
+        """Handle POST requests to approve articles.
+        
+        :param request: HTTP request object
+        :param article_id: ID of the article to approve
+        :returns: JSON response with success or error message
+        :rtype: Response
+        """
         if request.user.role.lower() != 'editor':
             return Response(
                 {"error": "You do not have permission to approve articles."},
@@ -490,10 +590,15 @@ class ArticleApprovalView(APIView):
 
 
 class NewsletterApprovalView(APIView):
-    """
-    API view for editors to approve newsletters.
-    """
+    """API view for editors to approve newsletters."""
     def post(self, request, newsletter_id, *args, **kwargs):
+        """Handle POST requests to approve newsletters.
+        
+        :param request: HTTP request object
+        :param newsletter_id: ID of the newsletter to approve
+        :returns: JSON response with success or error message
+        :rtype: Response
+        """
         if request.user.role.lower() != 'editor':
             return Response(
                 {"error": "You don't have permission to approve newsletters."},
