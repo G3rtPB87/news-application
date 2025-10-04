@@ -80,7 +80,7 @@
 
 
 <div class="viewcode-block" id="CustomUser">
-<a class="viewcode-back" href="../../news.html#news.admin.CustomUser">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.admin.CustomUser">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomUser</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A custom user model extending Django&#39;s AbstractUser for role-based access control.</span>
 <span class="sd">    </span>
@@ -145,7 +145,7 @@
 
 
 <div class="viewcode-block" id="Publisher">
-<a class="viewcode-back" href="../../news.html#news.admin.Publisher">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.admin.Publisher">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Publisher</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a publishing entity in the news application.</span>
 <span class="sd">    </span>
@@ -176,7 +176,7 @@
 
 
 <div class="viewcode-block" id="Article">
-<a class="viewcode-back" href="../../news.html#news.admin.Article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.admin.Article">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Article</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a news article in the system.</span>
 <span class="sd">    </span>
@@ -223,7 +223,7 @@
 
 
 <div class="viewcode-block" id="Newsletter">
-<a class="viewcode-back" href="../../news.html#news.admin.Newsletter">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.admin.Newsletter">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Newsletter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a newsletter in the system.</span>
 <span class="sd">    </span>
@@ -270,7 +270,7 @@
 
 
 <div class="viewcode-block" id="assign_permissions_to_groups">
-<a class="viewcode-back" href="../../news.html#news.admin.assign_permissions_to_groups">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.admin.assign_permissions_to_groups">[docs]</a>
 <span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">CustomUser</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">assign_permissions_to_groups</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Signal receiver to assign permissions when a new user is created.</span>
@@ -329,7 +329,7 @@
 
 
 <div class="viewcode-block" id="clear_unrelated_fields">
-<a class="viewcode-back" href="../../news.html#news.admin.clear_unrelated_fields">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.admin.clear_unrelated_fields">[docs]</a>
 <span class="nd">@receiver</span><span class="p">(</span><span class="n">pre_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">CustomUser</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">clear_unrelated_fields</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Signal receiver to clear role-specific fields when user role changes.</span>

@@ -81,10 +81,10 @@
 
 <span class="c1"># Test cases for the signals</span>
 <div class="viewcode-block" id="TestSignal">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSignal">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSignal">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestSignal</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
 <div class="viewcode-block" id="TestSignal.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSignal.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSignal.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Set email backend to in-memory for testing</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">original_email_backend</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">EMAIL_BACKEND</span>
@@ -136,7 +136,7 @@
 
 
 <div class="viewcode-block" id="TestSignal.tearDown">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSignal.tearDown">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSignal.tearDown">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Restore original email backend</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">EMAIL_BACKEND</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_email_backend</span></div>
@@ -145,7 +145,7 @@
 
 
 <div class="viewcode-block" id="test_approve_article_sends_email_and_posts_to_x">
-<a class="viewcode-back" href="../../news.html#news.tests.test_approve_article_sends_email_and_posts_to_x">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.test_approve_article_sends_email_and_posts_to_x">[docs]</a>
 <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;requests.post&#39;</span><span class="p">)</span>
 <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;news.signals.send_mail&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">test_approve_article_sends_email_and_posts_to_x</span><span class="p">(</span>
@@ -173,7 +173,7 @@
 
 
 <div class="viewcode-block" id="test_approve_newsletter_sends_email_and_posts_to_x">
-<a class="viewcode-back" href="../../news.html#news.tests.test_approve_newsletter_sends_email_and_posts_to_x">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.test_approve_newsletter_sends_email_and_posts_to_x">[docs]</a>
 <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;requests.post&#39;</span><span class="p">)</span>
 <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;news.signals.send_mail&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">test_approve_newsletter_sends_email_and_posts_to_x</span><span class="p">(</span>
@@ -205,10 +205,10 @@
 
 <span class="c1"># Test cases for the API views</span>
 <div class="viewcode-block" id="TestSubscribedArticlesView">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedArticlesView">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedArticlesView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestSubscribedArticlesView</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
 <div class="viewcode-block" id="TestSubscribedArticlesView.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedArticlesView.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedArticlesView.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;subscribed_articles&#39;</span><span class="p">)</span>
 
@@ -241,14 +241,14 @@
 
 
 <div class="viewcode-block" id="TestSubscribedArticlesView.test_get_subscribed_articles_unauthenticated">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedArticlesView.test_get_subscribed_articles_unauthenticated">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedArticlesView.test_get_subscribed_articles_unauthenticated">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_get_subscribed_articles_unauthenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TestSubscribedArticlesView.test_get_subscribed_articles_authenticated_reader_no_subscriptions">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedArticlesView.test_get_subscribed_articles_authenticated_reader_no_subscriptions">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedArticlesView.test_get_subscribed_articles_authenticated_reader_no_subscriptions">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_get_subscribed_articles_authenticated_reader_no_subscriptions</span><span class="p">(</span>
         <span class="bp">self</span>
     <span class="p">):</span>
@@ -259,7 +259,7 @@
 
 
 <div class="viewcode-block" id="TestSubscribedArticlesView.test_get_subscribed_articles_authenticated_reader_with_subscriptions">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedArticlesView.test_get_subscribed_articles_authenticated_reader_with_subscriptions">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedArticlesView.test_get_subscribed_articles_authenticated_reader_with_subscriptions">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_get_subscribed_articles_authenticated_reader_with_subscriptions</span><span class="p">(</span>
         <span class="bp">self</span>
     <span class="p">):</span>
@@ -274,10 +274,10 @@
 
 
 <div class="viewcode-block" id="TestSubscribedNewslettersView">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedNewslettersView">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedNewslettersView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestSubscribedNewslettersView</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
 <div class="viewcode-block" id="TestSubscribedNewslettersView.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedNewslettersView.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedNewslettersView.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;subscribed_newsletters&#39;</span><span class="p">)</span>
 
@@ -310,14 +310,14 @@
 
 
 <div class="viewcode-block" id="TestSubscribedNewslettersView.test_get_subscribed_newsletters_unauthenticated">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedNewslettersView.test_get_subscribed_newsletters_unauthenticated">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedNewslettersView.test_get_subscribed_newsletters_unauthenticated">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_get_subscribed_newsletters_unauthenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">401</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TestSubscribedNewslettersView.test_get_subscribed_newsletters_authenticated_reader_with_subscriptions">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscribedNewslettersView.test_get_subscribed_newsletters_authenticated_reader_with_subscriptions">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscribedNewslettersView.test_get_subscribed_newsletters_authenticated_reader_with_subscriptions">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_get_subscribed_newsletters_authenticated_reader_with_subscriptions</span><span class="p">(</span>
         <span class="bp">self</span>
     <span class="p">):</span>
@@ -333,12 +333,12 @@
 
 <span class="c1"># NEW COMPREHENSIVE TEST SUITE</span>
 <div class="viewcode-block" id="TestRoleBasedAccess">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestRoleBasedAccess</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test role-based access control for all views&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TestRoleBasedAccess.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Create users with different roles</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reader</span> <span class="o">=</span> <span class="n">CustomUser</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
@@ -369,7 +369,7 @@
 
 
 <div class="viewcode-block" id="TestRoleBasedAccess.test_editor_can_approve_article">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess.test_editor_can_approve_article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess.test_editor_can_approve_article">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_editor_can_approve_article</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test editors can approve articles via API&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>
@@ -384,7 +384,7 @@
 
 
 <div class="viewcode-block" id="TestRoleBasedAccess.test_journalist_cannot_approve_article">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess.test_journalist_cannot_approve_article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess.test_journalist_cannot_approve_article">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_journalist_cannot_approve_article</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test journalists cannot approve articles&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">journalist</span><span class="p">)</span>
@@ -397,7 +397,7 @@
 
 
 <div class="viewcode-block" id="TestRoleBasedAccess.test_reader_cannot_approve_article">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess.test_reader_cannot_approve_article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess.test_reader_cannot_approve_article">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_reader_cannot_approve_article</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test readers cannot approve articles&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="p">)</span>
@@ -410,7 +410,7 @@
 
 
 <div class="viewcode-block" id="TestRoleBasedAccess.test_editor_dashboard_access">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess.test_editor_dashboard_access">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess.test_editor_dashboard_access">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_editor_dashboard_access</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test only editors can access editor dashboard&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>
@@ -419,7 +419,7 @@
 
 
 <div class="viewcode-block" id="TestRoleBasedAccess.test_non_editor_dashboard_access_denied">
-<a class="viewcode-back" href="../../news.html#news.tests.TestRoleBasedAccess.test_non_editor_dashboard_access_denied">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestRoleBasedAccess.test_non_editor_dashboard_access_denied">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_non_editor_dashboard_access_denied</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test non-editors cannot access editor dashboard&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">journalist</span><span class="p">]:</span>
@@ -431,12 +431,12 @@
 
 
 <div class="viewcode-block" id="TestSubscriptionLogic">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscriptionLogic">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscriptionLogic">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestSubscriptionLogic</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test subscription functionality&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TestSubscriptionLogic.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscriptionLogic.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscriptionLogic.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reader</span> <span class="o">=</span> <span class="n">CustomUser</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
             <span class="n">username</span><span class="o">=</span><span class="s1">&#39;sub_reader&#39;</span><span class="p">,</span>
@@ -463,7 +463,7 @@
 
 
 <div class="viewcode-block" id="TestSubscriptionLogic.test_subscribed_content_filtering">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscriptionLogic.test_subscribed_content_filtering">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscriptionLogic.test_subscribed_content_filtering">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_subscribed_content_filtering</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test API returns only subscribed content&quot;&quot;&quot;</span>
         <span class="c1"># Reader subscribes to publisher</span>
@@ -489,7 +489,7 @@
 
 
 <div class="viewcode-block" id="TestSubscriptionLogic.test_unsubscribed_content_empty">
-<a class="viewcode-back" href="../../news.html#news.tests.TestSubscriptionLogic.test_unsubscribed_content_empty">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestSubscriptionLogic.test_unsubscribed_content_empty">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_unsubscribed_content_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test API returns empty for unsubscribed users&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reader</span><span class="p">)</span>
@@ -502,12 +502,12 @@
 
 
 <div class="viewcode-block" id="TestEmailXIntegration">
-<a class="viewcode-back" href="../../news.html#news.tests.TestEmailXIntegration">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestEmailXIntegration">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestEmailXIntegration</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test email and X integration comprehensively&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TestEmailXIntegration.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestEmailXIntegration.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestEmailXIntegration.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">journalist</span> <span class="o">=</span> <span class="n">CustomUser</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
             <span class="n">username</span><span class="o">=</span><span class="s1">&#39;email_journalist&#39;</span><span class="p">,</span>
@@ -531,7 +531,7 @@
 
 
 <div class="viewcode-block" id="TestEmailXIntegration.test_approval_sends_email_and_x_post">
-<a class="viewcode-back" href="../../news.html#news.tests.TestEmailXIntegration.test_approval_sends_email_and_x_post">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestEmailXIntegration.test_approval_sends_email_and_x_post">[docs]</a>
     <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;requests.post&#39;</span><span class="p">)</span>
     <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;news.signals.send_mail&#39;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_approval_sends_email_and_x_post</span><span class="p">(</span>
@@ -557,7 +557,7 @@
 
 
 <div class="viewcode-block" id="TestEmailXIntegration.test_x_api_failure_handling">
-<a class="viewcode-back" href="../../news.html#news.tests.TestEmailXIntegration.test_x_api_failure_handling">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestEmailXIntegration.test_x_api_failure_handling">[docs]</a>
     <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;requests.post&#39;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_x_api_failure_handling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_requests_post</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test X API failure doesn&#39;t break the application&quot;&quot;&quot;</span>
@@ -581,12 +581,12 @@
 
 
 <div class="viewcode-block" id="TestAPIComprehensive">
-<a class="viewcode-back" href="../../news.html#news.tests.TestAPIComprehensive">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestAPIComprehensive">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TestAPIComprehensive</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Comprehensive API testing&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TestAPIComprehensive.setUp">
-<a class="viewcode-back" href="../../news.html#news.tests.TestAPIComprehensive.setUp">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestAPIComprehensive.setUp">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">editor</span> <span class="o">=</span> <span class="n">CustomUser</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
             <span class="n">username</span><span class="o">=</span><span class="s1">&#39;api_editor&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password123&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;editor&#39;</span>
@@ -598,7 +598,7 @@
 
 
 <div class="viewcode-block" id="TestAPIComprehensive.test_article_approval_api">
-<a class="viewcode-back" href="../../news.html#news.tests.TestAPIComprehensive.test_article_approval_api">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestAPIComprehensive.test_article_approval_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_article_approval_api</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test article approval API endpoint&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>
@@ -617,7 +617,7 @@
 
 
 <div class="viewcode-block" id="TestAPIComprehensive.test_newsletter_approval_api">
-<a class="viewcode-back" href="../../news.html#news.tests.TestAPIComprehensive.test_newsletter_approval_api">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestAPIComprehensive.test_newsletter_approval_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_newsletter_approval_api</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test newsletter approval API endpoint&quot;&quot;&quot;</span>
         <span class="n">newsletter</span> <span class="o">=</span> <span class="n">Newsletter</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -641,7 +641,7 @@
 
 
 <div class="viewcode-block" id="TestAPIComprehensive.test_api_method_not_allowed">
-<a class="viewcode-back" href="../../news.html#news.tests.TestAPIComprehensive.test_api_method_not_allowed">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.tests.TestAPIComprehensive.test_api_method_not_allowed">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_api_method_not_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Test API endpoints reject unsupported methods&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>

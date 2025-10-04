@@ -84,7 +84,7 @@
 
 
 <div class="viewcode-block" id="home">
-<a class="viewcode-back" href="../../news.html#news.views.home">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.home">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders the home page with a list of approved articles and newsletters.</span>
 <span class="sd">    </span>
@@ -116,7 +116,7 @@
 
 
 <div class="viewcode-block" id="register">
-<a class="viewcode-back" href="../../news.html#news.views.register">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.register">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles user registration and assigns roles and permissions.</span>
 <span class="sd">    </span>
@@ -146,7 +146,7 @@
 
 
 <div class="viewcode-block" id="login_view">
-<a class="viewcode-back" href="../../news.html#news.views.login_view">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.login_view">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">login_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles user login and redirects to the appropriate dashboard.</span>
 <span class="sd">    </span>
@@ -178,7 +178,7 @@
 
 
 <div class="viewcode-block" id="logout_view">
-<a class="viewcode-back" href="../../news.html#news.views.logout_view">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.logout_view">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">logout_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Logs the user out and redirects to the home page.</span>
 <span class="sd">    </span>
@@ -192,7 +192,7 @@
 
 
 <div class="viewcode-block" id="dashboard">
-<a class="viewcode-back" href="../../news.html#news.views.dashboard">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.dashboard">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders the personalized dashboard for a logged-in reader.</span>
@@ -253,7 +253,7 @@
 
 
 <div class="viewcode-block" id="article_detail">
-<a class="viewcode-back" href="../../news.html#news.views.article_detail">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.article_detail">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">article_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">article_id</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders the detail page for a single article.</span>
 <span class="sd">    </span>
@@ -268,7 +268,7 @@
 
 
 <div class="viewcode-block" id="subscribe">
-<a class="viewcode-back" href="../../news.html#news.views.subscribe">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.subscribe">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">subscription_type</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles the subscription/unsubscription logic for readers.</span>
@@ -306,7 +306,7 @@
 
 
 <div class="viewcode-block" id="create_article">
-<a class="viewcode-back" href="../../news.html#news.views.create_article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.create_article">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="nd">@user_passes_test</span><span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;journalist&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_article</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -331,7 +331,7 @@
 
 
 <div class="viewcode-block" id="journalist_dashboard">
-<a class="viewcode-back" href="../../news.html#news.views.journalist_dashboard">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.journalist_dashboard">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="nd">@user_passes_test</span><span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;journalist&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">journalist_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -358,7 +358,7 @@
 
 
 <div class="viewcode-block" id="edit_article">
-<a class="viewcode-back" href="../../news.html#news.views.edit_article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.edit_article">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">edit_article</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Allows authors and editors to edit existing articles.</span>
@@ -399,7 +399,7 @@
 
 
 <div class="viewcode-block" id="delete_article">
-<a class="viewcode-back" href="../../news.html#news.views.delete_article">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.delete_article">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">delete_article</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Allows authors and editors to delete articles.</span>
@@ -436,7 +436,7 @@
 
 
 <div class="viewcode-block" id="edit_newsletter">
-<a class="viewcode-back" href="../../news.html#news.views.edit_newsletter">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.edit_newsletter">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">edit_newsletter</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Allows authors and editors to edit existing newsletters.</span>
@@ -477,7 +477,7 @@
 
 
 <div class="viewcode-block" id="delete_newsletter">
-<a class="viewcode-back" href="../../news.html#news.views.delete_newsletter">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.delete_newsletter">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">delete_newsletter</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Allows authors and editors to delete newsletters.</span>
@@ -514,7 +514,7 @@
 
 
 <div class="viewcode-block" id="editor_dashboard">
-<a class="viewcode-back" href="../../news.html#news.views.editor_dashboard">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.editor_dashboard">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="nd">@user_passes_test</span><span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;editor&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">editor_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -541,7 +541,7 @@
 
 
 <div class="viewcode-block" id="editor_content_management">
-<a class="viewcode-back" href="../../news.html#news.views.editor_content_management">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.editor_content_management">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="nd">@user_passes_test</span><span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;editor&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">editor_content_management</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -565,7 +565,7 @@
 
 
 <div class="viewcode-block" id="create_newsletter">
-<a class="viewcode-back" href="../../news.html#news.views.create_newsletter">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.create_newsletter">[docs]</a>
 <span class="nd">@login_required</span>
 <span class="nd">@user_passes_test</span><span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;journalist&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_newsletter</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -589,14 +589,14 @@
 
 
 <div class="viewcode-block" id="SubscribedArticlesView">
-<a class="viewcode-back" href="../../news.html#news.views.SubscribedArticlesView">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.SubscribedArticlesView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SubscribedArticlesView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;API view to get a list of articles based on a reader&#39;s subscriptions.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns articles from publishers and journalists that the reader follows.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SubscribedArticlesView.get">
-<a class="viewcode-back" href="../../news.html#news.views.SubscribedArticlesView.get">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.SubscribedArticlesView.get">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle GET requests for subscribed articles.</span>
 <span class="sd">        </span>
@@ -638,14 +638,14 @@
 
 
 <div class="viewcode-block" id="SubscribedNewslettersView">
-<a class="viewcode-back" href="../../news.html#news.views.SubscribedNewslettersView">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.SubscribedNewslettersView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SubscribedNewslettersView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;API view to get a list of newsletters based on a reader&#39;s subscriptions.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns newsletters from publishers and journalists that the reader follows.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SubscribedNewslettersView.get">
-<a class="viewcode-back" href="../../news.html#news.views.SubscribedNewslettersView.get">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.SubscribedNewslettersView.get">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle GET requests for subscribed newsletters.</span>
 <span class="sd">        </span>
@@ -687,11 +687,11 @@
 
 
 <div class="viewcode-block" id="ArticleApprovalView">
-<a class="viewcode-back" href="../../news.html#news.views.ArticleApprovalView">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.ArticleApprovalView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ArticleApprovalView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;API view for editors to approve articles.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="ArticleApprovalView.post">
-<a class="viewcode-back" href="../../news.html#news.views.ArticleApprovalView.post">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.ArticleApprovalView.post">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">article_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle POST requests to approve articles.</span>
 <span class="sd">        </span>
@@ -727,11 +727,11 @@
 
 
 <div class="viewcode-block" id="NewsletterApprovalView">
-<a class="viewcode-back" href="../../news.html#news.views.NewsletterApprovalView">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.NewsletterApprovalView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NewsletterApprovalView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;API view for editors to approve newsletters.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="NewsletterApprovalView.post">
-<a class="viewcode-back" href="../../news.html#news.views.NewsletterApprovalView.post">[docs]</a>
+<a class="viewcode-back" href="../../news%202.html#news.views.NewsletterApprovalView.post">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">newsletter_id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle POST requests to approve newsletters.</span>
 <span class="sd">        </span>
