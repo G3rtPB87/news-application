@@ -199,28 +199,28 @@ docker run -p 8000:8000 news-application
 Create a .env file in the project root with the following variables:
 
 # Django Settings
-SECRET_KEY=your-secret-key-here
+SECRET_KEY=your-secret-key-here\
 DEBUG=True
 
 # Database Configuration
-DB_NAME=news_application_db
-DB_USER=your-database-user
-DB_PASSWORD=your-database-password
-DB_HOST=localhost
+DB_NAME=news_application_db\
+DB_USER=your-database-user\
+DB_PASSWORD=your-database-password\
+DB_HOST=localhost\
 DB_PORT=3306
 
 # Email Configuration
-\EMAIL_HOST=smtp.gmail.com
-\EMAIL_PORT=587
-\EMAIL_HOST_USER=your-email@gmail.com
-\EMAIL_HOST_PASSWORD=your-app-password
-\DEFAULT_FROM_EMAIL=your-email@gmail.com
+EMAIL_HOST=smtp.gmail.com\
+EMAIL_PORT=587\
+EMAIL_HOST_USER=your-email@gmail.com\
+EMAIL_HOST_PASSWORD=your-app-password\
+DEFAULT_FROM_EMAIL=your-email@gmail.com
 
 # X/Twitter API Configuration (Optional)
-# X_API_KEY=your-x-api-key
-# X_API_SECRET=your-x-api-secret
-# X_ACCESS_TOKEN=your-x-access-token
-# X_ACCESS_SECRET=your-x-access-secret
+X_API_KEY=your-x-api-key\
+X_API_SECRET=your-x-api-secret\
+X_ACCESS_TOKEN=your-x-access-token\
+X_ACCESS_SECRET=your-x-access-secret
 
 Copy .env.example to .env and fill in your actual credentials.
 
@@ -236,7 +236,8 @@ FLUSH PRIVILEGES;
 ```
 **Configure environment variables in .env file**
 Database settings are automatically loaded from environment variables
-Usage
+
+## **Usage**
 
 **User Roles and Workflows**
 
@@ -356,11 +357,11 @@ coverage html
 
 ## **Contributing** [Back to Top](#top)
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-Fork the Project
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-Push to the Branch (git push origin feature/AmazingFeature)
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.\
+Fork the Project\
+Create your Feature Branch (git checkout -b feature/AmazingFeature)\
+Commit your Changes (git commit -m 'Add some AmazingFeature')\
+Push to the Branch (git push origin feature/AmazingFeature)\
 Open a Pull Request
 
 ---
@@ -373,6 +374,6 @@ This project is licensed under the **Unlicense License** \- see the ‘License f
 
 ## **Contact** [Back to Top](#top)
 
-Gert Bester - gert.bester@icloud.com
+Gert Bester - gert.bester@icloud.com\
 Project Link: https://github.com/g3rtpb87/news-application
 
