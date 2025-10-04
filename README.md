@@ -107,11 +107,11 @@ docker-compose up --build
 Docker Features
 ```
 
-Uses SQLite by default for easy testing
-Includes MariaDB client libraries for production use
-Auto-creates admin user on first run
-Runs database migrations automatically
-Collects static files on build
+- Uses SQLite by default for easy testing
+- Includes MariaDB client libraries for production use
+- Auto-creates admin user on first run
+- Runs database migrations automatically
+- Collects static files on build
 
 ---
 
@@ -210,17 +210,17 @@ DB_HOST=localhost
 DB_PORT=3306
 
 # Email Configuration
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_HOST_USER=your-email@gmail.com
-EMAIL_HOST_PASSWORD=your-app-password
-DEFAULT_FROM_EMAIL=your-email@gmail.com
+\EMAIL_HOST=smtp.gmail.com
+\EMAIL_PORT=587
+\EMAIL_HOST_USER=your-email@gmail.com
+\EMAIL_HOST_PASSWORD=your-app-password
+\DEFAULT_FROM_EMAIL=your-email@gmail.com
 
 # X/Twitter API Configuration (Optional)
-X_API_KEY=your-x-api-key
-X_API_SECRET=your-x-api-secret
-X_ACCESS_TOKEN=your-x-access-token
-X_ACCESS_SECRET=your-x-access-secret
+# X_API_KEY=your-x-api-key
+# X_API_SECRET=your-x-api-secret
+# X_ACCESS_TOKEN=your-x-access-token
+# X_ACCESS_SECRET=your-x-access-secret
 
 Copy .env.example to .env and fill in your actual credentials.
 
