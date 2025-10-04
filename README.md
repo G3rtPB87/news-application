@@ -90,6 +90,7 @@ docker build -t news-application .
 
 # Run the container (uses SQLite for testing)
 docker run -p 8000:8000 news-application
+```
 
 The application will be available at http://localhost:8000
 
@@ -104,6 +105,7 @@ For production with MariaDB, use docker-compose:
 ```bash
 docker-compose up --build
 Docker Features
+```
 
 Uses SQLite by default for easy testing
 Includes MariaDB client libraries for production use
@@ -130,6 +132,7 @@ The documentation includes:
 cd docs
 make html
 # Open docs/_build/html/index.html in your browser
+```
 
 ---
 
@@ -147,32 +150,39 @@ make html
 ```bash
 git clone [https://github.com/g3rtpb87/news-application.git](https://github.com/g3rtpb87/news-application.git)
 cd news-application
+```
 
 2. **Set up virtual environment**
 ```bash
 python -m venv venv
 source venv/bin/activate # On Windows: venv\Scripts\activate
+```
 
 3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
+```
 
 4. **Configure environment variables**
 ```bash
 cp .env.example .env
 # Edit .env with your actual credentials
+```
 
 5. **Run migrations**
 ```bash
 python manage.py migrate
+```
 
 6. **Create superuser**
 ```bash
 python manage.py createsuperuser
+```
 
 7. **Start development server**
 ```bash
 python manage.py runserver
+```
 
 ### **Docker Installation**
 ```bash
@@ -180,6 +190,7 @@ python manage.py runserver
 docker build -t news-application .
 # Run the container
 docker run -p 8000:8000 news-application
+```
 
 ---
 
@@ -222,7 +233,7 @@ CREATE DATABASE news_application_db;
 CREATE USER 'news_user'@'localhost' IDENTIFIED BY 'your_password';
 GRANT ALL PRIVILEGES ON news_application_db.* TO 'news_user'@'localhost';
 FLUSH PRIVILEGES;
-
+```
 **Configure environment variables in .env file**
 Database settings are automatically loaded from environment variables
 Usage
@@ -295,6 +306,7 @@ fetch('/api/articles/subscribed/', {
 
 ```bash 
 python manage.py test news
+```
 
 ### **Run Specific Test Modules**
 
@@ -310,6 +322,7 @@ python manage.py test news.tests.test\_api
 
 \# Test authentication  
 python manage.py test news.tests.test\_auth
+```
 
 ### 
 
@@ -320,6 +333,7 @@ pip install coverage
 coverage run manage.py test news  
 coverage report  
 coverage html
+```
 
 ---
 
