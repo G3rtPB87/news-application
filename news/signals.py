@@ -5,12 +5,22 @@ from django.conf import settings
 from django.template.loader import render_to_string
 import requests
 from requests_oauthlib import OAuth1
+import os
 
 from .models import Article, CustomUser, Publisher, Newsletter
 
 
 @receiver(post_save, sender=Article)
 def approve_article(sender, instance, created, **kwargs):
+    """Signal handler for article approval and distribution.
+    
+    Sends email notifications to subscribers and posts to X/Twitter
+    when an article is approved.
+    
+    :param sender: The model class
+    :param instance: The article instance
+    :param created: Boolean indicating if this is a new instance
+    """
     # Check if the article has just been approved
     if (
         not created
@@ -53,37 +63,35 @@ def approve_article(sender, instance, created, **kwargs):
                 html_message=message
             )
 
+        # X/Twitter integration - requires environment variables
         try:
-            consumer_key = '0IHU2LGnrMS19zYXjWUXiVmCx'
-            consumer_secret = (
-                'KPuxnc2G1TKFWT7yLKF4vh3FUNmMcqzchdUg2nVI55P2MSEcTy'
-            )
-            access_token = '1960271448150609920-cwaD31uRAte9M5HfCJqVaND2hEyE9w'
-            access_token_secret = (
-                'u92WqSTmBMC7by5m0MYQAxogdpZM2dm7tid517lOWdjUn'
-            )
+            consumer_key = os.environ.get('X_API_KEY')
+            consumer_secret = os.environ.get('X_API_SECRET')
+            access_token = os.environ.get('X_ACCESS_TOKEN')
+            access_token_secret = os.environ.get('X_ACCESS_SECRET')
 
-            oauth = OAuth1(
-                consumer_key,
-                client_secret=consumer_secret,
-                resource_owner_key=access_token,
-                resource_owner_secret=access_token_secret
-            )
-
-            api_url = "https://api.x.com/2/tweets"
-            post_data = {
-                'text': (
-                    f"New article from {author.username}: {instance.title} - "
-                    + f"Read more @ http://yrdomain.com/articles/{instance.id}"
+            if all([consumer_key, consumer_secret, access_token, access_token_secret]):
+                oauth = OAuth1(
+                    consumer_key,
+                    client_secret=consumer_secret,
+                    resource_owner_key=access_token,
+                    resource_owner_secret=access_token_secret
                 )
-            }
 
-            response = requests.post(api_url, auth=oauth, json=post_data)
+                api_url = "https://api.x.com/2/tweets"
+                post_data = {
+                    'text': (
+                        f"New article from {author.username}: {instance.title} - "
+                        + f"Read more @ http://yrdomain.com/articles/{instance.id}"
+                    )
+                }
 
-            if response.status_code == 201:
-                print(f"Successfully posted to X: {response.json()}")
-            else:
-                print(f"Failed to post to X: {response.json()}")
+                response = requests.post(api_url, auth=oauth, json=post_data)
+
+                if response.status_code == 201:
+                    print(f"Successfully posted to X: {response.json()}")
+                else:
+                    print(f"Failed to post to X: {response.json()}")
 
         except requests.exceptions.RequestException as e:
             print(f"Error posting to X: {e}")
@@ -93,6 +101,15 @@ def approve_article(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Newsletter)
 def approve_newsletter(sender, instance, created, **kwargs):
+    """Signal handler for newsletter approval and distribution.
+    
+    Sends email notifications to subscribers and posts to X/Twitter
+    when a newsletter is approved.
+    
+    :param sender: The model class
+    :param instance: The newsletter instance
+    :param created: Boolean indicating if this is a new instance
+    """
     # Check if the newsletter has just been approved
     if (
         not created
@@ -135,44 +152,39 @@ def approve_newsletter(sender, instance, created, **kwargs):
                     recipient_list,
                     html_message=message
                 )
-            except (
-                smtplib.SMTPException,
-                django.core.mail.BadHeaderError
-            ) as e:
+            except Exception as e:
                 print(f"Error sending email for newsletter: {e}")
 
+        # X/Twitter integration - requires environment variables
         try:
-            consumer_key = '0IHU2LGnrMS19zYXjWUXiVmCx'
-            consumer_secret = (
-                'KPuxnc2G1TKFWT7yLKF4vh3FUNmMcqzchdUg2nVI55P2MSEcTy'
-            )
-            access_token = '1960271448150609920-cwaD31uRAte9M5HfCJqVaND2hEyE9w'
-            access_token_secret = (
-                'u92WqSTmBMC7by5m0MYQAxogdpZM2dm7tid517lOWdjUn'
-            )
+            consumer_key = os.environ.get('X_API_KEY')
+            consumer_secret = os.environ.get('X_API_SECRET')
+            access_token = os.environ.get('X_ACCESS_TOKEN')
+            access_token_secret = os.environ.get('X_ACCESS_SECRET')
 
-            oauth = OAuth1(
-                consumer_key,
-                client_secret=consumer_secret,
-                resource_owner_key=access_token,
-                resource_owner_secret=access_token_secret
-            )
-
-            api_url = "https://api.x.com/2/tweets"
-            post_data = {
-                'text': (
-                    f"New newsletter from {author.username}: "
-                    f"{instance.title} - "
-                    f"Read more @ http://yrdomain.com/articles/{instance.id}"
+            if all([consumer_key, consumer_secret, access_token, access_token_secret]):
+                oauth = OAuth1(
+                    consumer_key,
+                    client_secret=consumer_secret,
+                    resource_owner_key=access_token,
+                    resource_owner_secret=access_token_secret
                 )
-            }
 
-            response = requests.post(api_url, auth=oauth, json=post_data)
+                api_url = "https://api.x.com/2/tweets"
+                post_data = {
+                    'text': (
+                        f"New newsletter from {author.username}: "
+                        f"{instance.title} - "
+                        f"Read more @ http://yrdomain.com/articles/{instance.id}"
+                    )
+                }
 
-            if response.status_code == 201:
-                print(f"Successfully posted to X: {response.json()}")
-            else:
-                print(f"Failed to post to X: {response.json()}")
+                response = requests.post(api_url, auth=oauth, json=post_data)
+
+                if response.status_code == 201:
+                    print(f"Successfully posted to X: {response.json()}")
+                else:
+                    print(f"Failed to post to X: {response.json()}")
 
         except requests.exceptions.RequestException as e:
             print(f"Error posting to X: {e}")

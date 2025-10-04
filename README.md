@@ -1,219 +1,209 @@
-\# News Application Platform
+<a id="top"></a>
+# News Application Platform
 
-# This is a Django-based news application that serves as a platform for independent journalists and publishers. It features a robust user management system with distinct roles, a subscription service for readers, and an automated content dissemination system.
+A comprehensive Django-based news platform that enables independent journalists, publishers, and readers to connect through a robust content management and subscription system.
 
-\---
+![Django](https://img.shields.io/badge/Django-4.2+-green.svg)
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![MariaDB](https://img.shields.io/badge/MariaDB-Database-orange.svg)
 
-\#\# Table of Contents  
-\- \[Features\](\#features)  
-\- \[Technology Stack\](\#technology-in-use)  
-\- \[Installation\](\#installation)  
-\- \[Database Setup\](\#database-setup)  
-\- \[Configuration\](\#configuration)  
-\- \[Usage\](\#usage)  
-\- \[API Documentation\](\#api-documentation)  
-\- \[Testing\](\#testing)  
-\- \[Troubleshooting\](\#troubleshooting)  
-\- \[License\](\#license)
+## Table of Contents
 
-\#\#\# Features
-
-* # Custom User Roles: Differentiated roles for Reader, Journalist, and Editor.
-
-* # Content Management: A system for journalists to create and manage articles and newsletters, and for editors to approve them.
-
-* # Subscription Service: Readers can subscribe to their favorite publishers and journalists.
-
-* Publisher Functions: This needs to be created in the admin site directly once you have created the superuser  
-* Automated Dissemination: Approved content is automatically sent to subscribers via email and posted to an X (formerly Twitter) account using signals.  
-* RESTful API: An API for third-party clients to retrieve content based on subscriptions.
-
-\#\#\# Content Management  
-\- Article creation and editing.  
-\- Newsletter management.  
-\- Content approval workflow.  
-\- Automated publishing system.
-
-\#\#\# Subscription Service  
-\- Users can subscribe to publishers and journalists.  
-\- Personalized content feeds.  
-\- Email notifications for new content.
-
-\#\#\# Automated Distribution  
-\- Automatic posting to X (Twitter) upon content approval.  
-\- Email notifications to subscribers.  
-\- Social media integration.
-
-\#\#\# RESTful API  
-\- A comprehensive \*\*API\*\* for third-party integrations.  
-\- Subscription-based content access.  
-\- Role-based API permissions.
-
-\---
-
-\#\# Technology Stack  
-\- \*\*Backend\*\*: Django 4.2+, Django REST Framework  
-\- \*\*Database\*\*: MariaDB/MySQL  
-\- \*\*Frontend\*\*: HTML5, Tailwind CSS, JavaScript  
-\- \*\*Authentication\*\*: Django Auth System  
-\- \*\*API\*\*: Django REST Framework  
-\- \*\*Social Media\*\*: X (Twitter) API integration  
-\- \*\*Email\*\*: SMTP integration
-
-\---
-
-\#\# Installation  
-\#\#\# Prerequisites  
-\- Python 3.8+  
-\- MariaDB Server  
-\- pip (Python package manager)  
-\- Virtualenv (recommended)
-
-\#\#\# Step 1: Clone the Repository  
-\`\`\`bash  
-git clone \[https://github.com/G3rtPB87/G3rtPB87\_Dev.git\](https://github.com/G3rtPB87/G3rtPB87\_Dev.git)  
-cd G3rtPB87\_Dev
-
-### **Step 2: Create a Virtual Environment**
-
-Bash  
-\# macOS/Linux  
-python3 \-m venv venv  
-source venv/bin/activate
-
-\# Windows  
-python \-m venv venv  
-venv\\Scripts\\activate
-
-### **Step 3: Install Dependencies**
-
-Bash  
-pip install \-r requirements.txt
+* [About The Project](#about-the-project)
+* [Features](#features)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation](#installation)
+* [Environment Variables](#environment-variables)
+* [Usage](#usage)
+* [API Documentation](#api-documentation)
+* [Testing](#testing)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
 
 ---
 
-## **Database Setup**
+## About The Project
 
-### **Step 1: Create a MariaDB Database**
+The News Application Platform is designed to democratize news distribution by providing a complete ecosystem where:
 
-SQL  
-CREATE DATABASE news\_application\_db;  
-CREATE USER 'news\_user'@'localhost' IDENTIFIED BY 'your\_secure\_password';  
-GRANT ALL PRIVILEGES ON news\_application\_db.\* TO 'news\_user'@'localhost';  
-FLUSH PRIVILEGES;
+* **Independent Journalists** can publish their work
+* **Publishers** can manage their brand and content
+* **Readers** can discover and subscribe to quality content
+* **Editors** can maintain content quality through approval workflows
 
-### 
+### Features [Back to Top](#top)
 
-### **Step 2: Configure Database Settings**
+#### Multi-role User System
 
-Update `news_application/settings.py` with the following:
+* Readers: Subscribe to content, personalized feeds
+* Journalists: Create and manage articles/newsletters
+* Editors: Content approval and quality control
+* Publishers: Brand management and team coordination
 
-Python  
-DATABASES \= {  
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'news\_application\_db',  
-        'USER': 'news\_user',  
-        'PASSWORD': 'your\_secure\_password',  
-        'HOST': 'localhost',  
-        'PORT': '3306',  
-        'OPTIONS': {  
-            'init\_command': "SET sql\_mode='STRICT\_TRANS\_TABLES'",  
-        }  
-    }  
-}
+#### Content Management
+
+* Article and newsletter creation
+* Draft, review, and publish workflows
+* Automated content distribution
+
+#### Subscription Engine
+
+* Follow publishers and journalists
+* Personalized content recommendations
+* Email notifications for new content
+
+#### RESTful API
+
+* Complete API for third-party integrations
+* Role-based access control
+* Subscription-based content delivery
 
 ---
 
-## **Configuration**
+## Built With [Back to Top](#top)
 
-### **Environment Variables**
+* [Django](https://www.djangoproject.com/) - Web Framework
+* [Django REST Framework](https://www.django-rest-framework.org/) - API Development
+* [MariaDB](https://mariadb.org/) - Database
+* [Tailwind CSS](https://tailwindcss.com/) - Styling
+* [Docker](https://www.docker.com/) - Containerization
 
-These settings needs to be updated inside the settings.py
+---
 
-\# news\_application/settings.py   
-DATABASES \= { 'default': { 'ENGINE': '[django.db](http://django.db).backends.mysql',  
- 'NAME': 'news\_application\_db',  
- 'USER': 'news\_user',  
- 'PASSWORD': 'your\_secure\_password',  
- 'HOST': 'localhost',  
- 'PORT': '3306',  
-'OPTIONS': { 'init\_command': "SET sql\_mode='STRICT\_TRANS\_TABLES'",   
-}   
-}   
-}
+## Getting Started [Back to Top](#top)
 
-\# Email Configuration  
-EMAIL\_HOST=smtp.gmail.com  
-EMAIL\_PORT=587  
-EMAIL\_USE\_TLS=True  
-EMAIL\_HOST\_USER=your-email@gmail.com  
-EMAIL\_HOST\_PASSWORD=your-app-password  
-DEFAULT\_FROM\_EMAIL=[your-email@gmail.com](mailto:your-email@gmail.com)
+### Prerequisites
 
-For X Integration, you need to update the [signals.py](http://signals.py) file
+* Python 3.8+
+* MariaDB/MySQL Server
+* pip (Python package manager)
 
-\# X (Twitter) API Configuration  
-X\_API\_KEY=your-x-api-key  
-X\_API\_SECRET=your-x-api-secret  
-X\_ACCESS\_TOKEN=your-x-access-token  
-X\_ACCESS\_SECRET=your-x-access-secret
+### Installation
 
-### **Initial Setup Commands**
+1. **Clone the repository**
+Bash
+git clone [https://github.com/yourusername/news-application.git](https://github.com/g3rtpb87/news-application.git)
+cd news-application
 
-Bash  
-\# Run migrations  
-python manage.py makemigrations  
+2. **Set up virtual environment**
+Bash
+python -m venv venv
+source venv/bin/activate # On Windows: venv\Scripts\activate
+
+3. **Install dependencies**
+Bash
+pip install -r requirements.txt
+
+4. **Configure environment variables**
+Bash
+cp .env.example .env
+# Edit .env with your actual credentials
+
+5. **Run migrations**
+Bash
 python manage.py migrate
 
-\# Create a superuser  
+6. **Create superuser**
+Bash
 python manage.py createsuperuser
 
-\# Collect static files  
-python manage.py collectstatic
-
-\# Start the development server  
+7. **Start development server**
+Bash
 python manage.py runserver
 
----
-
-## **Usage**
-
-### **Access Points**
-
-* **Home Page**: `http://localhost:8000/` \- Public content  
-* **Reader Dashboard**: `http://localhost:8000/dashboard/` \- Personalized feed  
-* **Journalist Dashboard**: `http://localhost:8000/journalist/dashboard/`  
-* **Editor Dashboard**: `http://localhost:8000/editor/dashboard/`  
-* **Admin Panel**: `http://localhost:8000/admin/`
-
-### **User Roles Workflow**
-
-* **For Readers**:  
-  * Register/login with the reader role.  
-  * Browse publishers and journalists on the home page.  
-  * Subscribe to preferred content creators.  
-  * View personalized content in the dashboard.  
-* **For Journalists**:  
-  * Register/login with the journalist role.  
-  * Create articles and newsletters.  
-  * Submit content for editor approval.  
-  * Manage existing content.  
-* **For Editors**:  
-  * Login with the editor role.  
-  * Review pending content in the editor dashboard.  
-  * Approve or reject submissions.  
-  * Manage published content.
+### **Docker Installation**
+Bash
+# Build the image
+docker build -t news-application .
+# Run the container
+docker run -p 8000:8000 news-application
 
 ---
 
-## 
+## **Environment Variables** [Back to Top](#top)
 
-## 
+Create a .env file in the project root with the following variables:
 
-## 
+# Django Settings
+SECRET_KEY=your-secret-key-here
+DEBUG=True
 
-## **API Documentation**
+# Database Configuration
+DB_NAME=news_application_db
+DB_USER=your-database-user
+DB_PASSWORD=your-database-password
+DB_HOST=localhost
+DB_PORT=3306
+
+# Email Configuration
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-app-password
+DEFAULT_FROM_EMAIL=your-email@gmail.com
+
+# X/Twitter API Configuration (Optional)
+X_API_KEY=your-x-api-key
+X_API_SECRET=your-x-api-secret
+X_ACCESS_TOKEN=your-x-access-token
+X_ACCESS_SECRET=your-x-access-secret
+
+Copy .env.example to .env and fill in your actual credentials.
+
+### **Database Setup**
+
+**Create MariaDB Database:**
+
+SQL
+CREATE DATABASE news_application_db;
+CREATE USER 'news_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON news_application_db.* TO 'news_user'@'localhost';
+FLUSH PRIVILEGES;
+
+**Configure environment variables in .env file**
+Database settings are automatically loaded from environment variables
+Usage
+
+**User Roles and Workflows**
+
+**Readers**
+- Register/Login with reader role
+- Browse publishers and journalists on homepage
+- Subscribe to preferred content creators
+- Access personalized dashboard with subscribed content
+
+**Journalists**
+- Register/Login with journalist role
+- Create articles and newsletters
+- Submit content for editorial review
+- Manage published content portfolio
+
+**Editors**
+- Login with editor role
+- Review pending submissions in editor dashboard
+- Approve/reject content with feedback
+- Manage content quality and standards
+
+**Publishers**
+- Currently: Created through admin panel by administrators
+- Planned Enhancement: Self-service publisher registration portal
+- Manage editorial team and content strategy
+- Build subscriber base and brand presence
+
+**Access Points**
+- Home Page: http://localhost:8000/ - Public content discovery
+- Reader Dashboard: http://localhost:8000/dashboard/ - Personalized feed
+- Journalist Dashboard: http://localhost:8000/journalist/dashboard/
+- Editor Dashboard: http://localhost:8000/editor/dashboard/
+- Admin Panel: http://localhost:8000/admin/
+
+---
+
+## **API Documentation** [Back to Top](#top)
 
 ### **Authentication Required Endpoints**
 
@@ -224,7 +214,7 @@ python manage.py runserver
 | `/api/articles/approve/<id>/` | `POST` | Approve an article | Editor |
 | `/api/newsletters/approve/<id>/` | `POST` | Approve a newsletter | Editor |
 
-Export to Sheets
+Full API documentation available in the docs/ folder.
 
 ### **Example API Usage**
 
@@ -240,7 +230,7 @@ fetch('/api/articles/subscribed/', {
 
 ---
 
-## **Testing**
+## **Testing** [Back to Top](#top)
 
 ### **Run the Complete Test Suite**
 
@@ -274,63 +264,42 @@ coverage html
 
 ---
 
-## **Troubleshooting**
+## **Roadmap** [Back to Top](#top)
 
-### **Common Issues**
-
-**Database Connection Errors**:  
-Bash  
-\# Ensure MariaDB is running  
-sudo systemctl start mariadb
-
-\# Check database user privileges  
-mysql \-u root \-p \-e "SHOW GRANTS FOR 'news\_user'@'localhost';"
-
-* 
-
-**Migration Issues**:  
-Bash  
-\# Reset migrations if needed  
-python manage.py makemigrations \--reset  
-python manage.py migrate \--fake-initial
-
-* 
-
-**Static Files Not Loading**:  
-Bash  
-python manage.py collectstatic \--noinput
-
-*   
-* **X API Posting Failures**:  
-  * Verify API credentials in `.env`.  
-  * Check your internet connection.  
-  * Verify X API app permissions.  
-* **Email Configuration**:  
-  * Use app passwords for Gmail.  
-  * Enable less secure apps if using other providers.  
-  * Check email port settings.
-
-### **Getting Help**
-
-* Check Django error logs in the terminal.  
-* Verify all environment variables are set correctly.  
-* Ensure all dependencies are installed.  
-* Check your database connection settings.  
-* Create an issue on the GitHub repository.
+* Publisher Self-Registration Portal
+* Allow publishing houses to register directly
+* Onboarding workflow for new publishers
+* Brand customization options
+* Enhanced Analytics
+* Content performance metrics
+* Reader engagement analytics
+* Subscription growth tracking
+* Mobile Application
+* React Native mobile app
+* Push notifications
+* Offline reading capability
 
 ---
 
-## **License**
+## **Contributing** [Back to Top](#top)
 
-This project is licensed under the **Unlicense License** \- see the `LICENSE` file for details.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+Fork the Project
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+Push to the Branch (git push origin feature/AmazingFeature)
+Open a Pull Request
 
 ---
 
-## **Support**
+## **License** [Back to Top](#top)
 
-For support and questions:
+This project is licensed under the **Unlicense License** \- see the ‘License file for details.’
 
-* Check the [Django documentation](https://www.google.com/search?q=https://docs.djangoproject.com/en/stable/).  
-* Review error messages in the terminal.  
-* Create an issue on the GitHub repository.
+---
+
+## **Contact** [Back to Top](#top)
+
+Gert Bester - gert.bester@icloud.com
+Project Link: https://github.com/g3rtpb87news-application
 
