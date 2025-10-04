@@ -1,0 +1,26 @@
+# Create .dockerignore directly in terminal
+touch .dockerignore
+
+# Add content to .dockerignore
+cat > .dockerignore << 'EOF'
+.git
+.gitignore
+README.md
+.env
+*.pyc
+__pycache__
+*.sqlite3
+.DS_Store
+.vscode
+docs/_build
+venv
+.venv
+*.log
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+docker-compose.yml
+Dockerfile
+.dockerignore
+EOF
