@@ -6,12 +6,16 @@ A comprehensive Django-based news platform that enables independent journalists,
 ![Django](https://img.shields.io/badge/Django-4.2+-green.svg)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![MariaDB](https://img.shields.io/badge/MariaDB-Database-orange.svg)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue.svg)
+![Documentation](https://img.shields.io/badge/Docs-Sphinx%20%7C%20GitHub%20Pages-brightgreen.svg)
 
 ## Table of Contents
 
 * [About The Project](#about-the-project)
 * [Features](#features)
 * [Built With](#built-with)
+* [Docker Deployment](#docker-deployment)
+* [Documentation](#documentation)
 * [Getting Started](#getting-started)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
@@ -71,6 +75,61 @@ The News Application Platform is designed to democratize news distribution by pr
 * [MariaDB](https://mariadb.org/) - Database
 * [Tailwind CSS](https://tailwindcss.com/) - Styling
 * [Docker](https://www.docker.com/) - Containerization
+* [Sphinx](https://www.sphinx-doc.org/) - Documentation
+
+---
+
+## Docker Deployment [Back to Top](#top)
+
+This application is containerized with Docker for easy deployment and testing.
+
+### Quick Start with Docker
+```bash
+# Build the Docker image
+docker build -t news-application .
+
+# Run the container (uses SQLite for testing)
+docker run -p 8000:8000 news-application
+
+The application will be available at http://localhost:8000
+
+**Default Admin Login:**
+
+* Username: admin
+* Password: adminpassword
+
+**Production Deployment with MariaDB**
+
+For production with MariaDB, use docker-compose:
+```bash
+docker-compose up --build
+Docker Features
+
+Uses SQLite by default for easy testing
+Includes MariaDB client libraries for production use
+Auto-creates admin user on first run
+Runs database migrations automatically
+Collects static files on build
+
+---
+
+## Documentation [Back to Top](#top)
+
+Comprehensive documentation is available via Sphinx and deployed to GitHub Pages:
+
+**Live Documentation:** https://g3rtpb87.github.io/news-application/
+
+The documentation includes:
+- Complete API reference
+- Installation guides
+- User role workflows
+- Development setup instructions
+
+### Building Documentation Locally
+```bash
+cd docs
+make html
+# Open docs/_build/html/index.html in your browser
 
 ---
 
@@ -85,38 +144,38 @@ The News Application Platform is designed to democratize news distribution by pr
 ### Installation
 
 1. **Clone the repository**
-Bash
+```bash
 git clone [https://github.com/g3rtpb87/news-application.git](https://github.com/g3rtpb87/news-application.git)
 cd news-application
 
 2. **Set up virtual environment**
-Bash
+```bash
 python -m venv venv
 source venv/bin/activate # On Windows: venv\Scripts\activate
 
 3. **Install dependencies**
-Bash
+```bash
 pip install -r requirements.txt
 
 4. **Configure environment variables**
-Bash
+```bash
 cp .env.example .env
 # Edit .env with your actual credentials
 
 5. **Run migrations**
-Bash
+```bash
 python manage.py migrate
 
 6. **Create superuser**
-Bash
+```bash
 python manage.py createsuperuser
 
 7. **Start development server**
-Bash
+```bash
 python manage.py runserver
 
 ### **Docker Installation**
-Bash
+```bash
 # Build the image
 docker build -t news-application .
 # Run the container
@@ -158,7 +217,7 @@ Copy .env.example to .env and fill in your actual credentials.
 
 **Create MariaDB Database:**
 
-SQL
+```sql
 CREATE DATABASE news_application_db;
 CREATE USER 'news_user'@'localhost' IDENTIFIED BY 'your_password';
 GRANT ALL PRIVILEGES ON news_application_db.* TO 'news_user'@'localhost';
@@ -234,12 +293,12 @@ fetch('/api/articles/subscribed/', {
 
 ### **Run the Complete Test Suite**
 
-Bash  
+```bash 
 python manage.py test news
 
 ### **Run Specific Test Modules**
 
-Bash  
+```bash 
 \# Test models  
 python manage.py test news.tests.test\_models
 
@@ -256,7 +315,7 @@ python manage.py test news.tests.test\_auth
 
 ### **Test Coverage Report**
 
-Bash  
+```bash 
 pip install coverage  
 coverage run manage.py test news  
 coverage report  
