@@ -86,7 +86,7 @@ The News Application Platform is designed to democratize news distribution by pr
 
 1. **Clone the repository**
 Bash
-git clone [https://github.com/yourusername/news-application.git](https://github.com/g3rtpb87/news-application.git)
+git clone [https://github.com/g3rtpb87/news-application.git](https://github.com/g3rtpb87/news-application.git)
 cd news-application
 
 2. **Set up virtual environment**
@@ -301,5 +301,5 @@ This project is licensed under the **Unlicense License** \- see the ‘License f
 ## **Contact** [Back to Top](#top)
 
 Gert Bester - gert.bester@icloud.com
-Project Link: https://github.com/g3rtpb87news-application
+Project Link: https://github.com/g3rtpb87/news-application
 
